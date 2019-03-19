@@ -1,2 +1,2 @@
-# java-services
-hosts all my java code
+# stock-services
+Do several things with my stock portfolio
