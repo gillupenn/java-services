@@ -1,3 +1,23 @@
+.idea/
+.idea/*
+dependency-reduced-pom.xml
+*.iml
+out/
+target/
+local/
+**local.yaml
+.DS_Store
+/.mvn/
+/mvnw
+/mvnw.cmd
+.settings/
+.classpath
+.project
+*~
+test-output/
+
+
+
 # Compiled class file
 *.class
 
