@@ -4,6 +4,8 @@ dependency-reduced-pom.xml
 *.iml
 out/
 target/
+hooks/
+info/
 local/
 **local.yaml
 .DS_Store
