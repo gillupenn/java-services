@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.joda.time.DateTime;
 
 @Data
 @Builder
@@ -13,8 +14,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Stock {
-    //GRHPW2H6KRP7MAU5
 
-    public String name;
-
+    private String symbol;
+    private DateTime lastRefreshedTime;
+    private String interval;
+    private StockState state;
+    private Double stockPrice;
+    private Long volume;
 }
