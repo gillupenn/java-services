@@ -41,21 +41,15 @@ public class ExternalStockAPIClient {
 
         long start = System.currentTimeMillis();
         final WebTarget webTarget = prepareWebTarget(path, queryParams);
+        final Invocation.Builder preparedRequest = webTarget.request().accept(APPLICATION_JSON);
+        try {
 
-        int retry = 0;
-
-        int retryLimit = 2;
-        while (retry < retryLimit) {
-            final Invocation.Builder preparedRequest = webTarget.request().accept(APPLICATION_JSON);
-            try {
-
-                T response = function.apply(preparedRequest);
-                log.debug(String.format("Get call: %s in (ms): %d", path, System.currentTimeMillis() - start ));
-                return response;
-            } catch (WebApplicationException wae) {
-                log.error(String.format("WebApplicationException occured while calling external Stock API: %s",
-                        webTarget.getUri().toString()), wae);
-            }
+            T response = function.apply(preparedRequest);
+            log.debug(String.format("Get call: %s in (ms): %d", path, System.currentTimeMillis() - start));
+            return response;
+        } catch (WebApplicationException wae) {
+            log.error(String.format("WebApplicationException occured while calling external Stock API: %s",
+                    webTarget.getUri().toString()), wae);
         }
         throw new WebApplicationException(401);
     }
